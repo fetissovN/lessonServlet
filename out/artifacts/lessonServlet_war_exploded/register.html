@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Register</title>
+    <meta charset="utf-8">
+    <!--<link rel="stylesheet" type="text/css" href="css/index.css">-->
+    <link rel="stylesheet" type="text/css" href="css/foundation.css">
+    <link rel="stylesheet" type="text/css" href="css/foundation.min.css">
+    <link rel="stylesheet" type="text/css" href="css/app.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+</head>
+
+<body>
+
+<div class="row">
+    <div class="medium-6 medium-centered large-4 large-centered columns">
+
+        <form action="/register" method="post">
+            <div class="row column log-in-form">
+                <h4 class="text-center">Register please</h4>
+                <label>Name
+                    <input type="text" name="name" placeholder="Андрей">
+                </label>
+                <label>Surname
+                    <input type="text" name="surname" placeholder="Сидоров">
+                </label>
+                <label>Phone
+                    <input type="text" name="phone" placeholder="80333451671">
+                </label>
+                <label>Email
+                    <input type="text" name="email" placeholder="somebody@example.com">
+                </label>
+                <label>Password
+                    <input type="password"  name="password" placeholder="Password">
+                </label>
+                <label>Password again
+                    <input type="password"  name="confirm_password" placeholder="Password"> <span id='message'></span>
+                </label>
+                <input id="show-password" type="checkbox"><label for="show-password">Show password</label>
+                <input type="submit" class="button expanded" value="Register">
+                <!--<p class="text-center"><a href="#">Forgot your password?</a></p>-->
+                <p class="text-center"><a href="/">Log in</a></p>
+                <script type="text/javascript">
+                    $('#confirm_password').on('keyup', function () {
+                        if ($(this).val() == $('#password').val()) {
+                            $('#message').html('matching').css('color', 'green');
+                        } else $('#message').html('not matching').css('color', 'red');
+                    });
+                </script>
+
+
+            </div>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>
