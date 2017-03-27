@@ -10,7 +10,19 @@
     <link rel="stylesheet" type="text/css" href="css/foundation.min.css">
     <link rel="stylesheet" type="text/css" href="css/app.css">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#show-password').click(function() {
+                if ($('#show-password').is(':checked')){
+                    $('#password1').attr('type', 'text');
+                    $('#password2').attr('type', 'text');
+                }else {
+                    $('#password1').attr('type', 'password');
+                    $('#password2').attr('type', 'password');
+                }
+            });
+        });
+    </script>
 </head>
 
 <body>
@@ -31,26 +43,32 @@
                     <input type="text" name="phone" placeholder="80333451671">
                 </label>
                 <label>Email
-                    <input type="text" name="email" placeholder="somebody@example.com">
+                    <input type="email" name="email" placeholder="somebody@example.com">
                 </label>
                 <label>Password
-                    <input type="password"  name="password" placeholder="Password">
+                    <input id="password1" type="password"  name="password" placeholder="Password">
                 </label>
                 <label>Password again
-                    <input type="password"  name="confirm_password" placeholder="Password"> <span id='message'></span>
+                    <input id="password2" type="password"  name="confirm_password" placeholder="Password"> <span id='message'></span>
                 </label>
                 <input id="show-password" type="checkbox"><label for="show-password">Show password</label>
-                <input type="submit" class="button expanded" value="Register">
+                <input id="btnSubmit" type="submit" class="button expanded" value="Register">
+                <!--TODO Forgot your password?-->
                 <!--<p class="text-center"><a href="#">Forgot your password?</a></p>-->
                 <p class="text-center"><a href="/">Log in</a></p>
                 <script type="text/javascript">
-                    $('#confirm_password').on('keyup', function () {
-                        if ($(this).val() == $('#password').val()) {
-                            $('#message').html('matching').css('color', 'green');
-                        } else $('#message').html('not matching').css('color', 'red');
+                    $(function () {
+                        $('#btnSubmit').click(function () {
+                            var password = $('#password1').val();
+                            var confirmPassword = $('#password2').val();
+                            if (password != confirmPassword) {
+                                $('#message').html('password not match').css('color', 'red');
+                                return false;
+                            }
+                            return true;
+                        });
                     });
                 </script>
-
 
             </div>
         </form>

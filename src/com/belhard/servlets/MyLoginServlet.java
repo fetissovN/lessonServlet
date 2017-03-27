@@ -1,5 +1,6 @@
 package com.belhard.servlets;
 
+import com.belhard.java.UserDB;
 import com.belhard.java.Validate;
 import com.belhard.utils.StringUtils;
 
@@ -27,21 +28,22 @@ public class MyLoginServlet extends HttpServlet{
         request.setCharacterEncoding("UTF-8");
 
         String emailName = request.getParameter(email);
-        System.out.println(emailName);
         if (StringUtils.isBlank(emailName)) {
             emailName = email_default;
         }
 //        emailName = StringUtils.capitalizeFirstLetter(emailName);
 
         String password = request.getParameter(pass);
-        System.out.println(password);
         if (StringUtils.isBlank(password)) {
             password = pass_default;
         }
+        String nameUser = new UserDB().getUserByEmail(emailName).getName();
+        System.out.println(nameUser);
 //        password = StringUtils.capitalizeFirstLetter(password);
         if (new Validate().checkLogin(emailName,password)){
             response.setContentType("text/html");
             response.setCharacterEncoding("UTF-8");
+
 
             PrintWriter out = response.getWriter();
 
@@ -55,7 +57,7 @@ public class MyLoginServlet extends HttpServlet{
             out.println("<center>");
             out.println("<h1>Hello Page</h1>");
             out.println("</center>");
-            out.println("<h1>Hello, " + emailName + " " + password + "</h1>");
+            out.println("<h1>Hello," + nameUser + "</h1>");
             out.println("<a href=\"" + request.getServletContext().getContextPath() + "/index.html\">Go To Index Page</a>");
         }else {
             response.sendRedirect("index.html");

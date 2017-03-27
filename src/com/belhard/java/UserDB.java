@@ -1,6 +1,7 @@
 package com.belhard.java;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class UserDB {
@@ -26,5 +27,28 @@ public class UserDB {
             }
         }
 
+    }
+
+    public User getUserByEmail(String email){
+        User user = null;
+        try {
+            connectionJDBC.init();
+            PreparedStatement preparedStatement = connectionJDBC.getConnection().prepareStatement("SELECT * FROM users WHERE email=?");
+            preparedStatement.setString(1,email);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()){
+                user = new User(resultSet.getInt("id"),resultSet.getString("name"),resultSet.getString("surname"),resultSet.getString("email"),resultSet.getString("phone"));
+             }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            try {
+                connectionJDBC.closeConnection();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return user;
     }
 }

@@ -18,8 +18,8 @@ public class Validate {
             ps.setString(1, email);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
-                User user = new User(rs.getInt("id"),rs.getString("name"),rs.getString("surname"),rs.getString("email"),rs.getString("phone"));
-                System.out.println(user);
+//                User user = new User(rs.getInt("id"),rs.getString("name"),rs.getString("surname"),rs.getString("email"),rs.getString("phone"));
+//                System.out.println(user);
                 if (BCrypt.checkpw(pass, rs.getString("password"))) {
                     System.out.println("It matches");
                     b=true;
