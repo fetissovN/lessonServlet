@@ -1,6 +1,15 @@
 package com.belhard.utils;
 
 public final class StringUtils {
+	public static final String EMAIL = "txt_first_name";
+
+	public static final String PASS = "txt_last_name";
+
+	public static final String EMAIL_DEFAULT= "NoName";
+
+	public static final String PASS_DEFAULT = "NoName";
+
+	public static final String LOGIN_ERROR_MESSAGE = "Wrong password or email";
 
 	public static final String EMPTY_STR = "";
 

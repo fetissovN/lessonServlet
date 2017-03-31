@@ -16,32 +16,26 @@ import java.io.PrintWriter;
  * Created by Николай on 24.03.2017.
  */
 public class MyLoginServlet extends HttpServlet{
-    private static final String email = "txt_first_name";
 
-    private static final String pass = "txt_last_name";
-
-    private static final String email_default = "NoName";
-
-    private static final String pass_default = "NoName";
     @Override
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
 
-        String emailName = request.getParameter(email);
+        String emailName = request.getParameter(StringUtils.EMAIL);
         if (StringUtils.isBlank(emailName)) {
-            emailName = email_default;
+            emailName = StringUtils.EMAIL_DEFAULT;
         }
-//        emailName = StringUtils.capitalizeFirstLetter(emailName);
 
-        String password = request.getParameter(pass);
+
+        String password = request.getParameter(StringUtils.PASS);
         if (StringUtils.isBlank(password)) {
-            password = pass_default;
+            password = StringUtils.PASS_DEFAULT;
         }
-        String nameUser = new UserDB().getUserByEmail(emailName).getName();
-        System.out.println(nameUser);
-//        password = StringUtils.capitalizeFirstLetter(password);
+//        String nameUser = new UserDB().getUserByEmail(emailName).getName();
+//        System.out.println(nameUser);
+
         if (new Validate().checkLogin(emailName,password)){
-            request.setAttribute("name",nameUser);
+            request.setAttribute("name",new UserDB().getUserByEmail(emailName).getName());
             request.getRequestDispatcher("/welcome.do.jsp").forward(request,response);
 //            response.setContentType("text/html");
 //            response.setCharacterEncoding("UTF-8");
@@ -62,7 +56,9 @@ public class MyLoginServlet extends HttpServlet{
 //            out.println("<h1>Hello," + nameUser + "</h1>");
 //            out.println("<a href=\"" + request.getServletContext().getContextPath() + "/index.jsp\">Go To Index Page</a>");
         }else {
-            response.sendRedirect("index.jsp");
+            request.setAttribute("wrongLogin", StringUtils.LOGIN_ERROR_MESSAGE);
+            request.getRequestDispatcher("/index.jsp").forward(request,response);
+//     response.sendRedirect("index.jsp");
         }
 
     }

@@ -36,9 +36,10 @@
 <div class="row">
     <div class="medium-6 medium-centered large-4 large-centered columns">
 
-        <form action="/hello.do" method="get">
+        <form action="/hello.do" method="post">
             <div class="row column log-in-form">
                 <h4 class="text-center">Log in with you email account</h4>
+                <span style="color: red">${wrongLogin}</span>
                 <label>Email
                     <input type="email" name="txt_first_name" placeholder="somebody@example.com" required>
                 </label>
