@@ -41,26 +41,28 @@ public class MyLoginServlet extends HttpServlet{
         System.out.println(nameUser);
 //        password = StringUtils.capitalizeFirstLetter(password);
         if (new Validate().checkLogin(emailName,password)){
-            response.setContentType("text/html");
-            response.setCharacterEncoding("UTF-8");
-
-
-            PrintWriter out = response.getWriter();
-
-            out.println("<!DOCTYPE html PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\" \"http://www.w3.org/TR/html4/loose.dtd\">");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">");
-            out.println("<title>Hello Page</title>");
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<center>");
-            out.println("<h1>Hello Page</h1>");
-            out.println("</center>");
-            out.println("<h1>Hello," + nameUser + "</h1>");
-            out.println("<a href=\"" + request.getServletContext().getContextPath() + "/index.html\">Go To Index Page</a>");
+            request.setAttribute("name",nameUser);
+            request.getRequestDispatcher("/welcome.do.jsp").forward(request,response);
+//            response.setContentType("text/html");
+//            response.setCharacterEncoding("UTF-8");
+//
+//
+//            PrintWriter out = response.getWriter();
+//
+//            out.println("<!DOCTYPE html PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\" \"http://www.w3.org/TR/html4/loose.dtd\">");
+//            out.println("<html>");
+//            out.println("<head>");
+//            out.println("<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">");
+//            out.println("<title>Hello Page</title>");
+//            out.println("</head>");
+//            out.println("<body>");
+//            out.println("<center>");
+//            out.println("<h1>Hello Page</h1>");
+//            out.println("</center>");
+//            out.println("<h1>Hello," + nameUser + "</h1>");
+//            out.println("<a href=\"" + request.getServletContext().getContextPath() + "/index.jsp\">Go To Index Page</a>");
         }else {
-            response.sendRedirect("index.html");
+            response.sendRedirect("index.jsp");
         }
 
     }

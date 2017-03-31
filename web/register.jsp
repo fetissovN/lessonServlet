@@ -1,3 +1,11 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: Николай
+  Date: 31.03.2017
+  Time: 16:07
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <html>
@@ -34,22 +42,22 @@
             <div class="row column log-in-form">
                 <h4 class="text-center">Register please</h4>
                 <label>Name
-                    <input type="text" name="name" placeholder="Андрей">
+                    <input type="text" name="name" placeholder="Андрей" required>
                 </label>
                 <label>Surname
-                    <input type="text" name="surname" placeholder="Сидоров">
+                    <input type="text" name="surname" placeholder="Сидоров" required>
                 </label>
                 <label>Phone
-                    <input type="text" name="phone" placeholder="80333451671">
+                    <input type="text" name="phone" placeholder="80333451671" required>
                 </label>
                 <label>Email
-                    <input type="email" name="email" placeholder="somebody@example.com">
+                    <input type="email" name="email" placeholder="somebody@example.com" required>
                 </label>
                 <label>Password
-                    <input id="password1" type="password"  name="password" placeholder="Password">
+                    <input id="password1" type="password"  name="password" placeholder="Password" required>
                 </label>
                 <label>Password again
-                    <input id="password2" type="password"  name="confirm_password" placeholder="Password"> <span id='message'></span>
+                    <input id="password2" type="password"  name="confirm_password" placeholder="Password" required> <span id='message'></span>
                 </label>
                 <input id="show-password" type="checkbox"><label for="show-password">Show password</label>
                 <input id="btnSubmit" type="submit" class="button expanded" value="Register">
@@ -65,6 +73,10 @@
                                 $('#message').html('password not match').css('color', 'red');
                                 return false;
                             }
+                            if ($('#password1').val().length < 4){
+                                $('#message').html('password should be more than 4 characters').css('color', 'red');
+                                return false;
+                            }
                             return true;
                         });
                     });
@@ -77,3 +89,4 @@
 
 </body>
 </html>
+

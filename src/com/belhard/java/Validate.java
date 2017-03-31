@@ -8,7 +8,7 @@ import java.sql.SQLException;
 
 public class Validate {
     public boolean checkLogin(String email,String pass) {
-        Boolean b = false;
+        Boolean check = false;
         ConnectionJDBC db = new ConnectionJDBC();
         db.init();
 //        String pw_hash = BCrypt.hashpw("1341341", BCrypt.gensalt());
@@ -22,7 +22,7 @@ public class Validate {
 //                System.out.println(user);
                 if (BCrypt.checkpw(pass, rs.getString("password"))) {
                     System.out.println("It matches");
-                    b=true;
+                    check=true;
                 }else {
                     System.out.println("It does not match");
 
@@ -33,7 +33,7 @@ public class Validate {
         }
 //        String pw_hash = BCrypt.hashpw(nameS, BCrypt.gensalt());
 //        System.out.println(pw_hash);
-        return b;
+        return check;
     }
 
 }

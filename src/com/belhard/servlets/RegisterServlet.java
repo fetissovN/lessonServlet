@@ -1,5 +1,6 @@
 package com.belhard.servlets;
 
+import com.belhard.java.EmailSender;
 import com.belhard.java.User;
 import com.belhard.java.UserDB;
 import com.belhard.jbcrypt.BCrypt;
@@ -46,6 +47,10 @@ public class RegisterServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("/register.html").forward(request,response);
+//        EmailSender emailSender = new EmailSender();
+//        emailSender.send("fetissov.n@gmail.com");
+//        System.out.println("skjvbskjbv");
+        request.getRequestDispatcher("/register.jsp").forward(request,response);
+
     }
 }
