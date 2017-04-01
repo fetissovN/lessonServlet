@@ -1,6 +1,6 @@
-package com.belhard.java;
+package com.nick.java;
 
-import com.belhard.jbcrypt.BCrypt;
+import com.nick.jbcrypt.BCrypt;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

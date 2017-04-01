@@ -1,4 +1,4 @@
-package com.belhard.utils;
+package com.nick.utils;
 
 
 public class MessageUtils {

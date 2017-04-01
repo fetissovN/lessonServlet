@@ -11,7 +11,7 @@
 
     <servlet>
         <servlet-name>MyLoginServlet</servlet-name>
-        <servlet-class>com.belhard.servlets.MyLoginServlet</servlet-class>
+        <servlet-class>com.nick.servlets.MyLoginServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -21,7 +21,7 @@
 
     <servlet>
         <servlet-name>RegisterServlet</servlet-name>
-        <servlet-class>com.belhard.servlets.RegisterServlet</servlet-class>
+        <servlet-class>com.nick.servlets.RegisterServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>

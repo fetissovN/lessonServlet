@@ -1,4 +1,4 @@
-package com.belhard.java;
+package com.nick.java;
 
 /**
  * Created by Николай on 26.03.2017.

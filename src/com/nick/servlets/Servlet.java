@@ -1,4 +1,4 @@
-package com.belhard.servlets;
+package com.nick.servlets;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

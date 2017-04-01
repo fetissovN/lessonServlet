@@ -1,4 +1,4 @@
-package com.belhard.java;
+package com.nick.java;
 
 
 import javax.mail.*;

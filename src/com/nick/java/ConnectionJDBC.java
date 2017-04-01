@@ -1,4 +1,4 @@
-package com.belhard.java;
+package com.nick.java;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

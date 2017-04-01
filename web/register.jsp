@@ -1,5 +1,5 @@
-<%@ page import="com.belhard.utils.StringUtils" %>
-<%@ page import="com.belhard.utils.MessageUtils" %><%--
+<%@ page import="com.nick.utils.StringUtils" %>
+<%@ page import="com.nick.utils.MessageUtils" %><%--
   Created by IntelliJ IDEA.
   User: Николай
   Date: 31.03.2017

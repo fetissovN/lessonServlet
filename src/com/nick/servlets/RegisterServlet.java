@@ -1,13 +1,10 @@
-package com.belhard.servlets;
+package com.nick.servlets;
 
-import com.belhard.java.EmailSender;
-import com.belhard.java.User;
-import com.belhard.java.UserDB;
-import com.belhard.jbcrypt.BCrypt;
-import com.belhard.utils.MessageUtils;
-import com.belhard.utils.StringUtils;
+import com.nick.java.UserDB;
+import com.nick.jbcrypt.BCrypt;
+import com.nick.utils.MessageUtils;
+import com.nick.utils.StringUtils;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;

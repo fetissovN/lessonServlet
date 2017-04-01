@@ -1,4 +1,4 @@
-package com.belhard.java;
+package com.nick.java;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
