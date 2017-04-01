@@ -4,6 +4,7 @@ import com.belhard.java.EmailSender;
 import com.belhard.java.User;
 import com.belhard.java.UserDB;
 import com.belhard.jbcrypt.BCrypt;
+import com.belhard.utils.MessageUtils;
 import com.belhard.utils.StringUtils;
 
 import javax.servlet.RequestDispatcher;
@@ -32,17 +33,31 @@ public class RegisterServlet extends HttpServlet {
         SurnameF = StringUtils.capitalizeFirstLetter(SurnameF);
 
         String PhoneF = request.getParameter(Phone);
-        PhoneF = StringUtils.capitalizeFirstLetter(PhoneF);
+//        PhoneF = StringUtils.capitalizeFirstLetter(PhoneF);
 
         String EmailF = request.getParameter(Email);
-        EmailF = StringUtils.capitalizeFirstLetter(EmailF);
 
-        String PasswordF = request.getParameter(Password);
-//        PasswordF = StringUtils.capitalizeFirstLetter(PasswordF);
-        String pw_hash = BCrypt.hashpw(PasswordF, BCrypt.gensalt());
-        UserDB userDB = new UserDB();
-        userDB.saveNewUser(EmailF,NameF,SurnameF,PhoneF,pw_hash);
-        response.sendRedirect("/");
+        if (NameF!=null&&SurnameF!=null&&PhoneF!=null) {
+            if (StringUtils.emailCheck(EmailF.trim())) {
+                String PasswordF = request.getParameter(Password);
+                String pw_hash = BCrypt.hashpw(PasswordF, BCrypt.gensalt());
+                UserDB userDB = new UserDB();
+                userDB.saveNewUser(EmailF, NameF, SurnameF, PhoneF, pw_hash);
+
+                request.setAttribute("hello", MessageUtils.AFTER_REGISTER_MESSAGE);
+                request.getRequestDispatcher("registerSuccess.jsp").forward(request, response);
+            } else {
+                request.setAttribute("name", NameF);
+                request.setAttribute("surname", SurnameF);
+                request.setAttribute("phone", PhoneF);
+                request.setAttribute("emailErr", MessageUtils.REGISTER_ERROR_MESSAGE);
+                request.getRequestDispatcher("register.jsp").forward(request, response);
+            }
+        }else {
+            request.getRequestDispatcher("register.jsp").forward(request, response);
+        }
+
+
 //        User user = new User(EmailF,NameF,SurnameF,PhoneF,pw_hash);
     }
 

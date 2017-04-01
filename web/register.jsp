@@ -1,4 +1,5 @@
-<%--
+<%@ page import="com.belhard.utils.StringUtils" %>
+<%@ page import="com.belhard.utils.MessageUtils" %><%--
   Created by IntelliJ IDEA.
   User: Николай
   Date: 31.03.2017
@@ -42,16 +43,16 @@
             <div class="row column log-in-form">
                 <h4 class="text-center">Register please</h4>
                 <label>Name
-                    <input type="text" name="name" placeholder="Андрей" required>
+                    <input type="text" name="name" placeholder="Андрей" value="${name}" required>
                 </label>
                 <label>Surname
-                    <input type="text" name="surname" placeholder="Сидоров" required>
+                    <input type="text" name="surname" placeholder="Сидоров" value="${surname}" required>
                 </label>
                 <label>Phone
-                    <input type="text" name="phone" placeholder="80333451671" required>
+                    <input type="text" name="phone" placeholder="80333451671" value="${phone}" required>
                 </label>
                 <label>Email
-                    <input type="email" name="email" placeholder="somebody@example.com" required>
+                    <input type="email" name="email" placeholder="somebody@example.com" required><span style="color: red">${emailErr}</span>
                 </label>
                 <label>Password
                     <input id="password1" type="password"  name="password" placeholder="Password" required>
@@ -70,11 +71,11 @@
                             var password = $('#password1').val();
                             var confirmPassword = $('#password2').val();
                             if (password != confirmPassword) {
-                                $('#message').html('password not match').css('color', 'red');
+                                $('#message').html(<%=MessageUtils.PASSWORD_MATCHING_ERROR%>).css('color', 'red');
                                 return false;
                             }
                             if ($('#password1').val().length < 4){
-                                $('#message').html('password should be more than 4 characters').css('color', 'red');
+                                $('#message').html(<%=MessageUtils.PASSWORD_LENGTH_ERROR%>).css('color', 'red');
                                 return false;
                             }
                             return true;

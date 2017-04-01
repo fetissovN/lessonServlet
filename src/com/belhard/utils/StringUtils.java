@@ -1,5 +1,8 @@
 package com.belhard.utils;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public final class StringUtils {
 	public static final String EMAIL = "txt_first_name";
 
@@ -8,8 +11,6 @@ public final class StringUtils {
 	public static final String EMAIL_DEFAULT= "NoName";
 
 	public static final String PASS_DEFAULT = "NoName";
-
-	public static final String LOGIN_ERROR_MESSAGE = "Wrong password or email";
 
 	public static final String EMPTY_STR = "";
 
@@ -52,4 +53,14 @@ public final class StringUtils {
 		
 		return result;
 	}
+
+	public static boolean emailCheck(String str){
+	    Boolean check = false;
+        Pattern pattern = Pattern.compile("^[_A-Za-z0-9]+(.[_A-Za-z0-9-])*@(.[_A-Za-z0-9]{1,10})(.[a-z]{1,15})");
+        Matcher matcher = pattern.matcher(str);
+        if (matcher.matches()){
+            check=true;
+        }
+	    return check;
+    }
 }
