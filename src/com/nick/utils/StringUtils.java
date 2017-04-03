@@ -33,7 +33,6 @@ public final class StringUtils {
         if (isNotEmpty(str)) {
             return EMPTY_STR.equals(str.trim());
         }
-
         return true;
 	}
 
